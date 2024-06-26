@@ -31,7 +31,10 @@ Route::middleware('auth')->group(function () {
     route::get('/profile/{user_id}', [ProfileController::class,'show']);
     
     // Add Community Route
-    route::get('/addcommunity', [CommunityController::class, 'store']);
+    route::get('/addcommunity', [CommunityController::class, 'create']);
+
+    // Add Community Route
+    route::get('/addcommunity/save/{community_id}', [CommunityController::class, 'store']);
     
     // Logout Route
     route::get('/logout', [SessionController::class,'logout']);
@@ -40,6 +43,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/home', function () {
         return view('home');
     });
-    
 
 });

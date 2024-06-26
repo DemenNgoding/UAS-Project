@@ -14,10 +14,11 @@
 <body>
   @include('components/Navbar')
   <form action="/addcommunity">
-        <button><h3 href="AddCommunity.blade.php">Add Community</h3></button>
+        <button>Add Community</button>
   </form>
+  <!-- change to user id later -->
   <form action="/profile/1">
-        <button><h3 href="ShowProfile.blade.php">Profile</h3></button>
+        <button>Profile</button>
   </form>
 </body>
 </html>

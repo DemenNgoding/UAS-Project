@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Community;
+use Illuminate\Support\Facades\Auth;
 
 class CommunityController extends Controller
 {
@@ -19,7 +21,7 @@ class CommunityController extends Controller
      */
     public function create()
     {
-        //
+        return view('Community.AddCommunity');
     }
 
     /**
@@ -27,7 +29,25 @@ class CommunityController extends Controller
      */
     public function store(Request $request)
     {
+        $data = $request->validated();
+        $data['user_id'] = Auth::id();
+        Community::create($data);
+
         
+        // $table->string('community_name');
+        // $table->string('category');
+        // $table->integer('members');
+        // $table->integer('creator_id');
+        // $table->text('description');
+        // $table->string('city');
+        // $table->date('date_created');
+
+        // Community::create([
+        //     'id' => Auth::id(),
+        //     'name' => 
+        // ]);
+
+        return view('Home');
     }
 
     /**
