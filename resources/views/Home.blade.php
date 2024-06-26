@@ -9,8 +9,16 @@
     <link rel="stylesheet" href="{{asset('assets/css/Welcome.css')}}">
 
     <title>Home</title>
+
 </head>
 <body>
   @include('components/Navbar')
+  <form action="/addcommunity">
+        <button>Add Community</button>
+  </form>
+  <!-- change to user id later -->
+  <form action="/profile/1">
+        <button>Profile</button>
+  </form>
 </body>
 </html>
