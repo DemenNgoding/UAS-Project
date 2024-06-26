@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
+
 
 // Welcome Route
 Route::get('/', [SessionController::class,'index']);
@@ -25,6 +28,13 @@ Route::post('/register', [SessionController::class,'register']);
 Route::get('/home', function () {
     return view('home');
 });
+
+// Post Route
+Route::get('/create_post', function () {
+    return view('createpost');
+});
+Route::post('/create_post', [PostController::class, 'create_post'])->name('create_post');
+Route::get('/view_post', [PostController::class, 'view_post']);
 
 // Profile Route
 route::get('/profile', [ProfileController::class,'index']);
