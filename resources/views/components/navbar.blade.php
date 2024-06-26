@@ -7,6 +7,6 @@
             </ul>
         </nav>
 
-        <a class="lbtn" href="/profile"><button>PROFILE</button></a>
+        <a class="lbtn" href="/profile/1"><button>PROFILE</button></a>
     </header>
 </div>
