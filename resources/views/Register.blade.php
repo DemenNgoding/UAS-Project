@@ -19,11 +19,11 @@
 
             {{-- create error messages if email are not valid --}}
             @if (session()->has('error'))
-    
+
             <div class="error" role="alert">
                 {{ session('error') }}
             </div>
-    
+
             @endif
 
             {{-- Input Name --}}
