@@ -26,8 +26,11 @@ class SessionController extends Controller
         ];
 
         if(Auth::attempt($loginInfo)) {
-            // if the login success
-            return redirect('home');
+            if (Auth::user()->roles == 'operator') {
+                return redirect('operator');
+            } elseif (Auth::user()->roles == 'user') {
+                return redirect('home');
+            }
         } else {
             // if the login failed
             return redirect('login')->with('error','Wrong email or password');

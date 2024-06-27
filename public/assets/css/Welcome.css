@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
 
 * {
     box-sizing: border-box;
@@ -16,7 +16,9 @@
     height: 900px;
 }
 
-li, a, button{
+li,
+a,
+button {
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
     font-size: 16px;
@@ -71,7 +73,6 @@ button {
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease 0s;
-
     /*
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
@@ -83,6 +84,6 @@ button:hover {
     background-color: rgba(4, 50, 70, 0.8);
 }
 
-/* 111, 141, 105 Tuff Green */ 
+/* 111, 141, 105 Tuff Green */
 /* 237, 240, 241 putih */
 /* 4, 50, 70 biru */
