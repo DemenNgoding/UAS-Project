@@ -2,8 +2,11 @@
 
 use App\Http\Controllers\CommunityController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
+
 
 // Welcome Route
 Route::get('/', [SessionController::class,'index']);
@@ -49,3 +52,18 @@ Route::middleware('auth')->group(function () {
     });
 
 });
+
+// Post Route
+Route::get('/create_post/{user_id}', function () {
+    return view('createpost');
+});
+Route::post('/create_post/{user_id}', [PostController::class, 'create_post'])->name('create_post');
+Route::get('/view_post', [PostController::class, 'view_post']);
+Route::get('/edit_post/{user_id}', [PostController::class, 'edit_post']);
+Route::post('/update_post/{user_id}', [PostController::class, 'update_post']);
+
+// Profile Route
+route::get('/profile', [ProfileController::class,'index']);
+
+// Logout Route
+route::get('/logout', [SessionController::class,'logout']);
