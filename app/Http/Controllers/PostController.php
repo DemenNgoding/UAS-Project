@@ -54,7 +54,9 @@ class PostController extends Controller
     {
         $post = Post::find($id);
 
-        $post['user_id'] = Auth::id();
+        if ($post->user_id != Auth::id()) {
+            return redirect('view_post');
+        }
 
         $post->title = $request->title;
         $post->caption = $request->caption;
@@ -76,6 +78,10 @@ class PostController extends Controller
     public function delete_post($id)
     {
         $data = Post::find($id);
+
+        if($data->user_id != Auth::id()){
+            return redirect()->back()->with('error', 'You cannot delete this post!');
+        }
 
         $data->delete();
 

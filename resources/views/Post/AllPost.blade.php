@@ -74,19 +74,19 @@
                         </td>
 
                         <td>
-                            <a href="{{url('edit_post', $post->id)}}">
-                                <button>
-                                    Edit
-                                </button>
-                            </a>
+                            @if($post->user_id == Auth::id())
+                                <a href="{{url('edit_post', $post->id)}}">
+                                    <button>Edit</button>
+                                </a>
+                            @endif
                         </td>
 
                         <td>
-                            <a href="{{url('delete_post', $post->id)}}">
-                                <button class="btn-danger" onclick="confirmation()">
-                                    Delete
-                                </button>
-                            </a>
+                            @if($post->user_id == Auth::id())
+                                <a href="{{url('delete_post', $post->id)}}">
+                                    <button class="btn-danger" onclick="confirmation()">Delete</button>
+                                </a>
+                            @endif
                         </td>
 
                         <td>{{ $post->post_date }}</td>
