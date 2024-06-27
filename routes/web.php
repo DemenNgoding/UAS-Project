@@ -7,7 +7,6 @@ use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 
-
 // Welcome Route
 Route::get('/', [SessionController::class,'index']);
 
@@ -45,7 +44,10 @@ Route::middleware('auth')->group(function () {
     
     // Logout Route
     route::get('/logout', [SessionController::class,'logout']);
-    
+
+    // search comunity
+    Route::get('/community', [CommunityController::class,'index'])->name('community.index');
+
     // Home Route
     Route::get('/home', function () {
         return view('home');

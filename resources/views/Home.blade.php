@@ -13,6 +13,17 @@
 
 </head>
 <body>
+    <!-- search bar  -->
+     <form action="{{url('communities/{id}')}}" method="post">
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" name = "search" placeholder="Search Community here..." aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </form>
+    </div>
+  </div>
+</nav>
+
   @include('components/Navbar')
   <form action="/addcommunity">
         <button>Add Community</button>
