@@ -37,10 +37,9 @@ Route::middleware('auth')->group(function () {
     route::post('/regProfile', [ProfileController::class, 'store']);
 
     // Add Community Route
-    route::get('/addcommunity', [CommunityController::class, 'create']);
+    // route::get('/addcommunity', [CommunityController::class, 'create']);
 
     // Add Community Route
-    route::get('/addcommunity/save/{community_id}', [CommunityController::class, 'store']);
     
     // Logout Route
     route::get('/logout', [SessionController::class,'logout']);
@@ -52,17 +51,27 @@ Route::middleware('auth')->group(function () {
     Route::get('/home', function () {
         return view('home');
     });
-
+    
 });
+
+route::get('/create_community/{user_id}', function() {
+    return view('Community.CreateCommunity');
+});
+
+route::post('/create_community/{user_id}', [CommunityController::class, 'store'])->name('create_community');
 
 // Post Route
 Route::get('/create_post/{user_id}', function () {
-    return view('createpost');
+    return view('Post.createpost');
 });
 Route::post('/create_post/{user_id}', [PostController::class, 'create_post'])->name('create_post');
 Route::get('/view_post', [PostController::class, 'view_post']);
 Route::get('/edit_post/{user_id}', [PostController::class, 'edit_post']);
 Route::post('/update_post/{user_id}', [PostController::class, 'update_post']);
+Route::get('/delete_post/{user_id}', [PostController::class, 'delete_post']);
+Route::post('like_post/{id}', [PostController::class, 'like_post'])->name('like_post');
+Route::post('unlike_post/{id}', [PostController::class, 'unlike_post'])->name('unlike_post');
+
 
 // Profile Route
 route::get('/profile', [ProfileController::class,'index']);
