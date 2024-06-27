@@ -11,6 +11,8 @@ class PostController extends Controller
     {
         $data = new Post;
 
+        $data['user_id'] = Auth::id();
+
         $data->title = $request->title;
         $data->caption = $request->caption;
         $image = $request->image;

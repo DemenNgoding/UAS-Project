@@ -19,7 +19,7 @@
                 </a>
                 
                 <h1> CREATE POST </h1>
-                <form action="{{url('create_post')}}" method="POST" enctype ="multipart/form-data">
+                <form action="{{url('create_post/{user_id}')}}" method="POST" enctype ="multipart/form-data">
 
                     @csrf
 

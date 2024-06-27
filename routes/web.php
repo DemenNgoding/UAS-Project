@@ -50,10 +50,10 @@ Route::middleware('auth')->group(function () {
 });
 
 // Post Route
-Route::get('/create_post', function () {
+Route::get('/create_post/{user_id}', function () {
     return view('createpost');
 });
-Route::post('/create_post', [PostController::class, 'create_post'])->name('create_post');
+Route::post('/create_post/{user_id}', [PostController::class, 'create_post'])->name('create_post');
 Route::get('/view_post', [PostController::class, 'view_post']);
 
 // Profile Route

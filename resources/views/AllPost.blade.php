@@ -13,7 +13,7 @@
         <div>
             <center>
                 <h3> ALL POST </h3>
-                <a href="{{url('create_post')}}">
+                <a href="{{url('create_post/{user_id}')}}">
                     <button> Create Post </button>
                 </a>
                 <table>
