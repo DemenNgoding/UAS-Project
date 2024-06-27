@@ -15,6 +15,13 @@ Route::get('/login', function () {
 
 Route::post('/login', [SessionController::class,'login']);
 
+use App\Http\Controllers\EventController;
+
+Route::get('/events', [EventController::class, 'index'])->name('events.index');
+Route::get('/events/fetch', [EventController::class, 'fetchEvents'])->name('events.fetch');
+Route::post('/events/store', [EventController::class, 'store'])->name('events.store');
+Route::get('/events/{id}', [EventController::class, 'show'])->name('events.show');
+
 // Register Route
 Route::get('/register', function () {
     return view('register');

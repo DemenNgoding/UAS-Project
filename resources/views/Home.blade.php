@@ -20,5 +20,8 @@
   <form action="/profile/1">
         <button>Profile</button>
   </form>
+  <form action="{{ route('events.index') }}">
+        <button>Events</button>
+  </form>
 </body>
 </html>
