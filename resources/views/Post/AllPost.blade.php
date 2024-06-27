@@ -26,27 +26,53 @@
                 <br>
                 <table>
                     <tr>
+                        <th> Posted by </th>
+
                         <th> Post Title </th>
 
                         <th> Caption </th>
 
                         <th> Image </th>
 
+                        <th>Likes</th>
+
+                        <th>Like</th>
+
                         <th> Edit </th>
 
                         <th> Delete </th>
+
+                        <th> Posted on </th>
                     </tr>
                     
                     @foreach($post as $post)
                     <tr>
-                        <td>{{$post->title}}</td>
+                        <td>{{ $post->user->name }}</td>
 
-                        <td>{{$post->caption}}</td>
+                        <td>{{ $post->title }}</td>
+
+                        <td>{{ $post->caption }}</td>
 
                         <td>
                             <img width="150px" src="postimage/{{$post->image}}">
                         </td>
                         
+                        <td>{{ $post->like }}</td>
+
+                        <td>
+                            @if($post->likedUsers->contains(Auth::id()))
+                                <form action="{{ url('unlike_post', $post->id) }}" method="POST">
+                                    @csrf
+                                    <button type="submit">Unlike</button>
+                                </form>
+                            @else
+                                <form action="{{ url('like_post', $post->id) }}" method="POST">
+                                    @csrf
+                                    <button type="submit">Like</button>
+                                </form>
+                            @endif
+                        </td>
+
                         <td>
                             <a href="{{url('edit_post', $post->id)}}">
                                 <button>
@@ -62,6 +88,8 @@
                                 </button>
                             </a>
                         </td>
+
+                        <td>{{ $post->post_date }}</td>
                     </tr>   
                     @endforeach
                 </table>   

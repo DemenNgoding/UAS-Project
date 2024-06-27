@@ -14,7 +14,7 @@
             <center>
                 <h1> Update POST </h1>
                 
-                <form action="{{url('update_post', $data->id)}}" method="Post" enctype ="multipart/form-data">
+                <form action="{{url('update_post', $data->id)}}" method="POST" enctype ="multipart/form-data">
 
                 @csrf
 
