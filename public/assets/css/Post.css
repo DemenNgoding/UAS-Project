@@ -1,6 +1,11 @@
 
 .div_deg{
-    padding: 10px;
+    padding: 15px;
+}
+
+button{
+    background-color: rgb(144, 144, 194);
+    color: white;
 }
 
 label{
@@ -15,6 +20,7 @@ table{
 th{
     padding: 20px;
     text-align: center;
+    align-items:end;
     color: white;
     background-color: blue;
     font-size: 15px;
@@ -25,4 +31,8 @@ td{
     font-size: 13px;
     background-color: black;
     color: white;
+}
+
+.btn-danger{
+    background-color: red;
 }

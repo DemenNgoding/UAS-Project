@@ -27,7 +27,7 @@ class PostController extends Controller
         $data->post_date = now();
         $data->save();
 
-        return redirect()->back()->with('success', 'Post Created Successfully');
+        return redirect('view_post');
     }
 
     public function view_post()
@@ -52,9 +52,26 @@ class PostController extends Controller
 
         $post->title = $request->title;
         $post->caption = $request->caption;
+        $image = $request->image;
+
+        if($image)
+        {
+            $imagename = time().'.'.$image->getClientOriginalExtension();
+            $request->image->move('postimage', $imagename);
+            $post->image = $imagename;
+        }
 
         $post->post_date = now();
         $post->save();
+
+        return redirect('view_post')->with('success', 'Post Updated Successfully');
+    }
+
+    public function delete_post($id)
+    {
+        $data = Post::find($id);
+
+        $data->delete();
 
         return redirect()->back();
     }

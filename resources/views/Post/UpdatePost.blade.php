@@ -29,8 +29,8 @@
                     </div>
 
                     <div>
-                        <label>Old Image</label>
-                        <img width="150px" src="postimage/{{$data->image}}">
+                        <label class="div_deg">Old Image</label>
+                        <img width="150px" src="/postimage/{{$data->image}}">
                     </div>
 
                     <div class="div_deg">
@@ -38,7 +38,7 @@
                         <input type="file" name="image">
                     </div>
 
-                    <div>
+                    <div class="div_deg">
                         <input type="submit" value="Update Post">
                     </div>
                 </form>
