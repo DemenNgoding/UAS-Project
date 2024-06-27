@@ -37,15 +37,16 @@ Route::middleware('auth')->group(function () {
     route::post('/regProfile', [ProfileController::class, 'store']);
 
     // Add Community Route
-    // route::get('/addcommunity', [CommunityController::class, 'create']);
 
+    
     // Add Community Route
     
     // Logout Route
     route::get('/logout', [SessionController::class,'logout']);
 
     // search comunity
-    Route::get('/community', [CommunityController::class,'index'])->name('community.index');
+    Route::get('community/search', [CommunityController::class, 'search']);
+    Route::get('community', [CommunityController::class, 'index']);
 
     // Home Route
     Route::get('/home', function () {

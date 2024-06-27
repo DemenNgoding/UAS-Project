@@ -11,24 +11,22 @@ class CommunityController extends Controller
     /**
      * Display a listing of the resource.
      */ 
-    // public function index(Request $request){
+    public function search(Request $request){
+        if($request->has('search')){
+            $search = $request->search;
+            $data = Community::where('community_name', 'like', "%{$search}%")
+                             ->orWhere('category', 'like', "%{$search}%")
+                             ->paginate(5);
+        }else{
+            $data = Community::paginate(5);
+        }
+        return view('Home', ['community'=>$data]);
+    }
 
-    //     if($request->has('search')){
-    //         $search = $request->search;
-    //         $data = Community::where('community_name', 'like', '%'.$search.'%')
-    //                          ->orWhere('category', 'like', '%'.$search.'%');
-    //                          //->paginate(1);
-    //     }else{
-    //         //$data = Community::paginate(1);
-    //     }
-    
-    //     return view('Home.blade', compact('data'));
-    // }
-    
-    // public function index(){
+    public function index(){
         
-    //     return view('community.index');
-    // }
+        return view('community.index');
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -59,16 +57,16 @@ class CommunityController extends Controller
         return redirect()->back()->with('success', 'Community Created Successfully');
     }
 
-    public function search(Request $request) {
+    // public function search(Request $request) {
 
-        if(request('search')) {
-            $communities = Community::where('community_name', 'like', '%' .request('search') . '%')->get();
-        } else {
-            $communities = Community::all();
-        }
+    //     if(request('search')) {
+    //         $communities = Community::where('community_name', 'like', '%' .request('search') . '%')->get();
+    //     } else {
+    //         $communities = Community::all();
+    //     }
 
-        return view('/communities');
-    }
+    //     return view('/communities');
+    // }
 
     /**
      * Display the specified resource.

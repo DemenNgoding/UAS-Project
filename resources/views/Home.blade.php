@@ -10,23 +10,46 @@
     <!-- <link rel="stylesheet" href="{{asset('assets/css/profile.css')}}">   -->
 
     <title>Home</title>
+
 </head>
 <body>
     <!-- search bar  -->
-     <form action="{{url('communities/{id}')}}" method="post">
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" name = "search" placeholder="Search Community here..." aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </form>
-    </div>
-  </div>
-</nav>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Community Search</title>
+</head>
+<body>
+    <nav>
+        <div>
+            <form action="{{ url('community/search') }}" method="get" class="d-flex" role="search">
+                <input class="form-control me-2" type="search" name="search" placeholder="Search Community here..." aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
 
+    <div>
+        @if(isset($community))
+            <h2>Search Results:</h2>
+            <ul>
+                @foreach($community as $com)
+                    <li>{{ $com->community_name }}</li>
+                @endforeach
+            </ul>
+
+        @endif
+    </div>
+</body>
+</html>
+
+
+</div>
   @include('components/Navbar')
-  <form action="{{url('create_community/{user_id}')}}">
-        <button>Create Community</button>
+  <form action="/addcommunity">
+        <button>Add Community</button>
   </form>
+  <!-- change to user id later -->
       <a href="{{url('/profile/{user_id}')}}">
       </a>
 </body>
