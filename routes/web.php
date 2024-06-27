@@ -55,6 +55,8 @@ Route::get('/create_post/{user_id}', function () {
 });
 Route::post('/create_post/{user_id}', [PostController::class, 'create_post'])->name('create_post');
 Route::get('/view_post', [PostController::class, 'view_post']);
+Route::get('/edit_post/{user_id}', [PostController::class, 'edit_post']);
+Route::post('/update_post/{user_id}', [PostController::class, 'update_post']);
 
 // Profile Route
 route::get('/profile', [ProfileController::class,'index']);

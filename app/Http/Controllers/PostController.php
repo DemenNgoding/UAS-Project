@@ -34,8 +34,29 @@ class PostController extends Controller
     {
         $post = Post::all();
 
-        return view('AllPost', compact('post'));
+        return view('Post.AllPost', compact('post'));
     }
 
+    public function edit_post($id)
+    {
+        $data = Post::find($id);
+
+        return view('Post.UpdatePost', compact('data'));
+    }
+
+    public function update_post(Request $request, $id)
+    {
+        $post = Post::find($id);
+
+        $post['user_id'] = Auth::id();
+
+        $post->title = $request->title;
+        $post->caption = $request->caption;
+
+        $post->post_date = now();
+        $post->save();
+
+        return redirect()->back();
+    }
 }
 ?>

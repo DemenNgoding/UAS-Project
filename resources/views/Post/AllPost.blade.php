@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Create Post</title>
+        <title>View Post</title>
 
         {{-- Import css --}}
         <link rel="stylesheet" href="{{asset('assets/css/Post.css')}}">
@@ -35,6 +35,13 @@
                             <img width="150px" src="postimage/{{$post->image}}">
                         </td>
                         
+                        <td> {{$post->Edit}}
+                            <a href="{{url('edit_post', $post->id)}}">
+                                <button>
+                                    Edit
+                                </button>
+                            </a>
+                        </td>
                     </tr>
                     @endforeach
                 </table>
