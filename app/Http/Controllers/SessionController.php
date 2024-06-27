@@ -71,4 +71,14 @@ class SessionController extends Controller
         Auth::logout();
         return redirect("/");
     }
+
+    public function registerProfile (Request $request) {
+        $request->validate([
+            "username"=>"required",
+            "bio",
+            "gender"=> "required", 
+            "birth_date"=> "required", 
+            "city"=> "required", 
+        ]);
+    }
 }
