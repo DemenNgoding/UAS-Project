@@ -31,10 +31,10 @@ Route::middleware('auth')->group(function () {
     route::get('/profile/{user_id}', [ProfileController::class,'show']);
     
     // Add Community Route
-    route::get('/addcommunity', [CommunityController::class, 'create']);
+    route::get('/addcommunity', [CommunityController::class, 'create'])->name('community.create');
 
     // Add Community Route
-    route::get('/addcommunity/save/{community_id}', [CommunityController::class, 'store']);
+    Route::post('/addcommunity/save', [CommunityController::class, 'store'])->name('community.store');
     
     // Logout Route
     route::get('/logout', [SessionController::class,'logout']);

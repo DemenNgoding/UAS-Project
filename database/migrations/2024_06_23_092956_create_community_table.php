@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('creator_id');
             $table->text('description');
             $table->string('city');
-            $table->date('date_created');
+            // $table->date('date_created');
             $table->timestamps();
         });
     }

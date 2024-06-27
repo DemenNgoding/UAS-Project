@@ -6,21 +6,23 @@
     <title>Add Community</title>
 </head>
 <body>
-    <label for="name"> Name: </label>
-    <input type="text" name="community_name"><br><br>
+<form action="{{route('community.store')}}" method="POST">
+    @csrf
+    <label for="community_name"> Name: </label>
+    <input id="community_name" type="text" name="community_name"><br><br>
     <label for="description"> Description: </label>
-    <input type="description" name="description"><br><br>
+    <input type="description" id="description" name="description"><br><br>
     <div class="select-category">
-            Category:
-            <select name="category">
+        <label for="category"> Category: </label>
+            <select id="category" name="category">
                 <option value="game">Game</option>
                 <option value="olahraga">Olahraga</option>
                 <option value="pendidikan">Pendidikan</option>
             </select>
     </div><br>
     <div class="select-city">
-            City:
-            <select name="city">
+        <label for="city"> City: </label>
+            <select id="city">
                 <option value="banda-aceh">Banda Aceh</option>
                 <option value="medan">Medan</option>
                 <option value="binjai">Binjai</option>
@@ -80,8 +82,8 @@
                 <option value="mataram">Mataram</option>
             </select>
         </div><br><br>
-    <form action='/addcommunity/save/{community_id}'>
-        <input type="submit" value="Submit">
+    
+        <button type="submit">Submit</button>
     </form>
 </body>
 </html>
