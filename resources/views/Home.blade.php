@@ -10,14 +10,12 @@
     <!-- <link rel="stylesheet" href="{{asset('assets/css/profile.css')}}">   -->
 
     <title>Home</title>
-
 </head>
 <body>
   @include('components/Navbar')
-  <form action="/addcommunity">
-        <button>Add Community</button>
+  <form action="{{url('create_community/{user_id}')}}">
+        <button>Create Community</button>
   </form>
-  <!-- change to user id later -->
       <a href="{{url('/profile/{user_id}')}}">
       </a>
 </body>
