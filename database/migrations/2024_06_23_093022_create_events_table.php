@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id()->index()->primary()->autoIncrement();
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('community_id')->constrained('community');
+            // $table->foreignId('community_id')->constrained('community');
             $table->string('event_name');
             $table->string('content'); // berupa link nanti di cek lagi
             $table->string('location'); // akan connect ke google akan di cek nanti
