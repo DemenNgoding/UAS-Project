@@ -33,6 +33,10 @@ Route::middleware('auth')->group(function () {
     // Profile Route
     route::get('/profile/{user_id}', [ProfileController::class,'show']);
     
+    route::get('regProfile', [ProfileController::class, 'create']);
+
+    route::post('/regProfile', [ProfileController::class, 'store']);
+
     // Add Community Route
     route::get('/addcommunity', [CommunityController::class, 'create']);
 
