@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommunityController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SessionController;
@@ -24,9 +25,28 @@ Route::get('/register', function () {
 
 Route::post('/register', [SessionController::class,'register']);
 
-// Home Route
-Route::get('/home', function () {
-    return view('home');
+
+
+
+Route::middleware('auth')->group(function () {
+    
+    // Profile Route
+    route::get('/profile/{user_id}', [ProfileController::class,'show']);
+    
+    // Add Community Route
+    route::get('/addcommunity', [CommunityController::class, 'create']);
+
+    // Add Community Route
+    route::get('/addcommunity/save/{community_id}', [CommunityController::class, 'store']);
+    
+    // Logout Route
+    route::get('/logout', [SessionController::class,'logout']);
+    
+    // Home Route
+    Route::get('/home', function () {
+        return view('home');
+    });
+
 });
 
 // Post Route
