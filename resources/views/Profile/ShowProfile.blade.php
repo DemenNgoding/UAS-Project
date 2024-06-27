@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     {{-- Import css --}}
-    <link rel="stylesheet" href="{{asset('assets/css/Welcome.css')}}">
+    <!-- <link rel="stylesheet" href="{{asset('assets/css/welcome.css')}}"> -->
+    <link rel="stylesheet" href="{{asset('assets/css/profile.css')}}">
 
     <title>Profile</title>
 </head>
 <body>
-
+    <center>
     @include('components/Navbar')
     <!-- Image still cannot be shown. Supposed to be default image when user doesnt upload their image yet -->
     <img src="{!! $user->image !!}" alt="Profile Picture" width=200px>
@@ -24,6 +25,7 @@
     <p><strong>Bio:</strong> {{$user->bio}}</p>
     <p><strong>City:</strong> {{$user->city}}</p>
     <a href="/logout"><button>logout</button></a>
+    </center>
 </body>
 </html>
 

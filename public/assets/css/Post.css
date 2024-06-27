@@ -1,0 +1,28 @@
+
+.div_deg{
+    padding: 10px;
+}
+
+label{
+    display: inline-block;
+    width: 230px;
+}
+
+table{
+    border: 1px solid black;
+}
+
+th{
+    padding: 20px;
+    text-align: center;
+    color: white;
+    background-color: blue;
+    font-size: 15px;
+}
+
+td{
+    text-align: center;
+    font-size: 13px;
+    background-color: black;
+    color: white;
+}
