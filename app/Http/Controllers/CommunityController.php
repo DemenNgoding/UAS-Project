@@ -29,25 +29,20 @@ class CommunityController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validated();
-        $data['user_id'] = Auth::id();
-        Community::create($data);
+        $data = new Community;
 
+        $data['creator_id'] = Auth::id();
+
+        $data->community_name = $request->community_name;
+        $data->category = $request->category;
+        $data->description = $request->description;
+        $data->city = $request->city;
+        $data->members = $request->members;
+        $data->date_created = now();
         
-        // $table->string('community_name');
-        // $table->string('category');
-        // $table->integer('members');
-        // $table->integer('creator_id');
-        // $table->text('description');
-        // $table->string('city');
-        // $table->date('date_created');
+        $data->save();
 
-        // Community::create([
-        //     'id' => Auth::id(),
-        //     'name' => 
-        // ]);
-
-        return view('Home');
+        return redirect()->back()->with('success', 'Community Created Successfully');
     }
 
     /**

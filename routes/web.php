@@ -47,10 +47,9 @@ Route::middleware('auth')->group(function () {
     route::post('/regProfile', [ProfileController::class, 'store']);
 
     // Add Community Route
-    route::get('/addcommunity', [CommunityController::class, 'create']);
+    // route::get('/addcommunity', [CommunityController::class, 'create']);
 
     // Add Community Route
-    route::get('/addcommunity/save/{community_id}', [CommunityController::class, 'store']);
     
     // Logout Route
     route::get('/logout', [SessionController::class,'logout']);
@@ -59,8 +58,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/home', function () {
         return view('home');
     });
-
+    
 });
+
+route::get('/create_community/{user_id}', function() {
+    return view('Community.CreateCommunity');
+});
+
+route::post('/create_community/{user_id}', [CommunityController::class, 'store'])->name('create_community');
 
 // Post Route
 Route::get('/create_post/{user_id}', function () {

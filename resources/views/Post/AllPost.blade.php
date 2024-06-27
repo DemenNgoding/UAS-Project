@@ -35,14 +35,40 @@
                             <img width="150px" src="postimage/{{$post->image}}">
                         </td>
                         
-                        <td> {{$post->Edit}}
-                            <a href="{{url('edit_post', $post->id)}}">
-                                <button>
-                                    Edit
-                                </button>
-                            </a>
+                        <td>{{ $post->like }}</td>
+
+                        <td>
+                            @if($post->likedUsers->contains(Auth::id()))
+                                <form action="{{ url('unlike_post', $post->id) }}" method="POST">
+                                    @csrf
+                                    <button type="submit">Unlike</button>
+                                </form>
+                            @else
+                                <form action="{{ url('like_post', $post->id) }}" method="POST">
+                                    @csrf
+                                    <button type="submit">Like</button>
+                                </form>
+                            @endif
                         </td>
-                    </tr>
+
+                        <td>
+                            @if($post->user_id == Auth::id())
+                                <a href="{{url('edit_post', $post->id)}}">
+                                    <button>Edit</button>
+                                </a>
+                            @endif
+                        </td>
+
+                        <td>
+                            @if($post->user_id == Auth::id())
+                                <a href="{{url('delete_post', $post->id)}}">
+                                    <button class="btn-danger" onclick="confirmation()">Delete</button>
+                                </a>
+                            @endif
+                        </td>
+
+                        <td>{{ $post->post_date }}</td>
+                    </tr>   
                     @endforeach
                 </table>
             </center>
