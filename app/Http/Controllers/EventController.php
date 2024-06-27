@@ -48,4 +48,16 @@ class EventController extends Controller
         return response()->json($event);
     }
     
+    public function destroy($id)
+    {
+        $event = Event::findOrFail($id);
+        
+        if ($event->user_id !== Auth::id()) {
+            return response()->json(['message' => 'Unauthorized'], 403);
+        }
+
+        $event->delete();
+
+        return response()->json(['message' => 'Event deleted successfully']);
+    }
 }

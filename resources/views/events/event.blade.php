@@ -138,6 +138,7 @@
                     <p><strong>Location:</strong> <span id="eventLocationDetail"></span></p>
                     <p><strong>Content:</strong> <span id="eventContentDetail"></span></p>
                     <p><strong>Caption:</strong> <span id="eventCaptionDetail"></span></p>
+                    <button id="deleteEventButton" class="btn btn-danger">Delete Event</button>
                 </div>
             </div>
         </div>
@@ -182,8 +183,24 @@
                             
                             $('#eventCaptionDetail').text(event.caption);
 
-                            // Menampilkan modal
+                            // Show modal
                             $('#viewEventModal').modal('show');
+
+                            // Delete button functionality
+                            $('#deleteEventButton').off('click').on('click', function() {
+                                $.ajax({
+                                    url: '/events/' + eventId,
+                                    type: 'DELETE',
+                                    success: function() {
+                                        calendar.getEventById(eventId).remove();
+                                        $('#viewEventModal').modal('hide');
+                                        alert('Event Deleted');
+                                    },
+                                    error: function() {
+                                        alert('Failed to delete event');
+                                    }
+                                });
+                            });
                         },
                         error: function () {
                             alert('Failed to fetch event details');
