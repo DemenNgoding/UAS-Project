@@ -16,9 +16,20 @@ class EventController extends Controller
 
     public function fetchEvents()
     {
-        $events = Event::all();
+        $events = Event::all()->map(function ($event) {
+            return [
+                'id' => $event->id,
+                'title' => $event->event_name,
+                'start' => $event->date,
+                'location' => $event->location,
+                'content' => $event->content,
+                'caption' => $event->caption,
+            ];
+        });
+
         return response()->json($events);
     }
+
 
     public function store(Request $request)
     {

@@ -1,0 +1,26 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative; /* Penting untuk posisi pseudo-element */
+    overflow: show ; /* Untuk menghindari scroll jika elemen pseudo melebihi batas */
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url(../images/Dark.jpg) no-repeat center center;
+    background-size: cover;
+    opacity: 0.5; /* Mengatur opacity latar belakang */
+    z-index: -1; /* Menempatkan elemen pseudo di belakang konten utama */
+}
+
+.container {
+    position: relative; /* Pastikan konten tetap di atas latar belakang */
+    z-index: 1; /* Memastikan konten di atas elemen pseudo */
+}
