@@ -4,23 +4,17 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
-use App\Models\User;
-use App\Models\PostUserLike;
 
 class PostController extends Controller
 {
     public function create_post(Request $request)
     {
-        // $user_id = Auth::id();
-        // $user = User::find($user_id);
-        // $post->name = $user->name;
         $data = new Post;
 
         $data['user_id'] = Auth::id();
 
         $data->title = $request->title;
         $data->caption = $request->caption;
-
         $image = $request->image;
 
         if ($image)
@@ -33,12 +27,12 @@ class PostController extends Controller
         $data->post_date = now();
         $data->save();
 
-        return redirect('view_post');
+        return redirect()->back()->with('success', 'Post Created Successfully');
     }
 
     public function view_post()
     {
-        $post = Post::with('user')->get();
+        $post = Post::all();
 
         return view('Post.AllPost', compact('post'));
     }
@@ -60,14 +54,6 @@ class PostController extends Controller
 
         $post->title = $request->title;
         $post->caption = $request->caption;
-        $image = $request->image;
-
-        if($image)
-        {
-            $imagename = time().'.'.$image->getClientOriginalExtension();
-            $request->image->move('postimage', $imagename);
-            $post->image = $imagename;
-        }
 
         $post->post_date = now();
         $post->save();
@@ -86,47 +72,6 @@ class PostController extends Controller
         $data->delete();
 
         return redirect()->back();
-    }
-
-    public function like_post($id)
-    {
-        $user_id = Auth::id();
-        $post = Post::find($id);
-
-        $like = PostUserLike::where('user_id', $user_id)->where('post_id', $id)->first();
-
-        if (!$like) {
-            $post->like += 1;
-            $post->save();
-
-            PostUserLike::create([
-                'user_id' => $user_id,
-                'post_id' => $id,
-            ]);
-
-            return redirect()->back()->with('success', 'You liked the post');
-        }
-
-        return redirect()->back()->with('error', 'You already liked this post');
-    }
-
-    public function unlike_post($id)
-    {
-        $user_id = Auth::id();
-        $post = Post::find($id);
-
-        $like = PostUserLike::where('user_id', $user_id)->where('post_id', $id)->first();
-
-        if ($like) {
-            $post->like -= 1;
-            $post->save();
-
-            $like->delete();
-
-            return redirect()->back()->with('success', 'You unliked the post');
-        }
-
-        return redirect()->back()->with('error', 'You have not liked this post');
     }
 }
 ?>

@@ -18,6 +18,15 @@ Route::get('/login', function () {
 
 Route::post('/login', [SessionController::class,'login']);
 
+use App\Http\Controllers\EventController;
+
+Route::get('/events', [EventController::class, 'index'])->name('events.index');
+Route::get('/events/fetch', [EventController::class, 'fetchEvents'])->name('events.fetch');
+Route::post('/events/store', [EventController::class, 'store'])->name('events.store');
+Route::get('/events/{id}', [EventController::class, 'show'])->name('events.show');
+Route::delete('/events/{id}', [EventController::class, 'destroy'])->name('events.destroy');
+
+
 // Register Route
 Route::get('/register', function () {
     return view('register');
@@ -60,16 +69,12 @@ route::post('/create_community/{user_id}', [CommunityController::class, 'store']
 
 // Post Route
 Route::get('/create_post/{user_id}', function () {
-    return view('Post.createpost');
+    return view('createpost');
 });
 Route::post('/create_post/{user_id}', [PostController::class, 'create_post'])->name('create_post');
 Route::get('/view_post', [PostController::class, 'view_post']);
 Route::get('/edit_post/{user_id}', [PostController::class, 'edit_post']);
 Route::post('/update_post/{user_id}', [PostController::class, 'update_post']);
-Route::get('/delete_post/{user_id}', [PostController::class, 'delete_post']);
-Route::post('like_post/{id}', [PostController::class, 'like_post'])->name('like_post');
-Route::post('unlike_post/{id}', [PostController::class, 'unlike_post'])->name('unlike_post');
-
 
 // Profile Route
 route::get('/profile', [ProfileController::class,'index']);
