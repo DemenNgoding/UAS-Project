@@ -14,7 +14,7 @@
             <center>
                 <a href="{{url('view_post')}}">
                     <button class="btn btn-secondary"> 
-                        View Post
+                        Back
                     </button>
                 </a>
                 
@@ -35,6 +35,7 @@
                         <textarea name="caption"></textarea>
                     </div>
                     <br>
+                    <br>
                     {{-- Input Image --}}
                     <div>
                         <label class="div_deg">Add Image</label><br>
@@ -44,7 +45,7 @@
                     <br>
                     {{-- Submit Button --}}
                     <div>
-                        <input type="submit" value="Create Post" class = "btn btn-primary">
+                        <input type="submit" value="Create Post" class ="btn">
                     </div>
                 </form>
             </center>

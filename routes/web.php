@@ -64,7 +64,7 @@ Route::post('/update_post/{user_id}', [PostController::class, 'update_post']);
 Route::get('/delete_post/{user_id}', [PostController::class, 'delete_post']);
 Route::post('like_post/{id}', [PostController::class, 'like_post'])->name('like_post');
 Route::post('unlike_post/{id}', [PostController::class, 'unlike_post'])->name('unlike_post');
-
+Route::post('post/{postId}/comment', [PostController::class, 'comment'])->name('post.comment');
 
 // Profile Route
 route::get('/profile', [ProfileController::class,'index']);

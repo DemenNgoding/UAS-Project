@@ -12,6 +12,12 @@
     <body>
         <div>
             <center>
+                <a href="{{url('view_post')}}">
+                    <button class="btn btn-secondary"> 
+                        Back
+                    </button>
+                </a>
+                
                 <h1> Update POST </h1>
                 
                 <form action="{{url('update_post', $data->id)}}" method="POST" enctype ="multipart/form-data">

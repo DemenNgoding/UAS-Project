@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/
-    sweetalert/2.1.2/sweetalert.min.js" integrity="
-    sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7L
-    bgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" 
-    referrerpolicy="no-referrer"></script>
-    
+    <head>    
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>View Post</title>
@@ -54,7 +48,11 @@
                         <td>{{ $post->caption }}</td>
 
                         <td>
-                            <img width="150px" src="postimage/{{$post->image}}">
+                            @if($post->image)
+                                <img width="150px" src="postimage/{{ $post->image }}">
+                            @else
+                                <span>No image</span>
+                            @endif
                         </td>
                         
                         <td>{{ $post->like }}</td>

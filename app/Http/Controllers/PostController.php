@@ -29,6 +29,9 @@ class PostController extends Controller
             $request->image->move('postimage', $imagename);
             $data->image = $imagename;
         }
+        else {
+            $data->image = null;
+        }
 
         $data->post_date = now();
         $data->save();
@@ -67,6 +70,9 @@ class PostController extends Controller
             $imagename = time().'.'.$image->getClientOriginalExtension();
             $request->image->move('postimage', $imagename);
             $post->image = $imagename;
+        } 
+        else {
+            $post->image = $post->image;
         }
 
         $post->post_date = now();
