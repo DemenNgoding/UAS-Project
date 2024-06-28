@@ -16,7 +16,7 @@ class EventController extends Controller
 
     public function fetchEvents()
     {
-        $events = Event::all()->map(function ($event) {
+        $events = Event::with('user')->get()->map(function ($event) {
             return [
                 'id' => $event->id,
                 'title' => $event->event_name,
@@ -24,12 +24,12 @@ class EventController extends Controller
                 'location' => $event->location,
                 'content' => $event->content,
                 'caption' => $event->caption,
+                'user_name' => $event->user->name,
             ];
         });
 
         return response()->json($events);
     }
-
 
     public function store(Request $request)
     {
@@ -50,19 +50,31 @@ class EventController extends Controller
         $event->date = $request->date;
         $event->save();
 
-        return response()->json(['message' => 'Event created successfully', 'event' => $event]);
+        return response()->json([
+            'message' => 'Event created successfully',
+            'event' => $event,
+            'user_name' => Auth::user()->name,
+        ]);
     }
 
     public function show($id)
     {
-        $event = Event::findOrFail($id);
-        return response()->json($event);
+        $event = Event::with('user')->findOrFail($id);
+        return response()->json([
+            'id' => $event->id,
+            'event_name' => $event->event_name,
+            'date' => $event->date,
+            'location' => $event->location,
+            'content' => $event->content,
+            'caption' => $event->caption,
+            'user_name' => $event->user->name,
+        ]);
     }
-    
+
     public function destroy($id)
     {
         $event = Event::findOrFail($id);
-        
+
         if ($event->user_id !== Auth::id()) {
             return response()->json(['message' => 'Unauthorized'], 403);
         }

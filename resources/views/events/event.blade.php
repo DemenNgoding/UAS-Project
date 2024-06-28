@@ -49,7 +49,7 @@
                         <div class="form-group">
                             <label for="eventLocation">Event Location:</label>
                             <select id="eventLocation" class="form-control" name="location" size="5">
-                                <option value="banda-aceh">Banda Aceh</option>
+                            <option value="banda-aceh">Banda Aceh</option>
                                 <option value="medan">Medan</option>
                                 <option value="binjai">Binjai</option>
                                 <option value="pekanbaru">Pekanbaru</option>
@@ -139,6 +139,7 @@
                     <p><strong>Location:</strong> <span id="eventLocationDetail"></span></p>
                     <p><strong>Content:</strong> <span id="eventContentDetail"></span></p>
                     <p><strong>Caption:</strong> <span id="eventCaptionDetail"></span></p>
+                    <p><strong>Posted by:</strong> <span id="eventUserDetail"></span></p>
                     <button id="deleteEventButton" class="btn btn-danger">Delete Event</button>
                 </div>
             </div>
@@ -183,6 +184,7 @@
                             $('#eventContentDetail').html(`<a href="${contentLink}" target="_blank">${contentLink}</a>`);
                             
                             $('#eventCaptionDetail').text(event.caption);
+                            $('#eventUserDetail').text(event.user_name);
 
                             // Show modal
                             $('#viewEventModal').modal('show');
@@ -242,11 +244,14 @@
                             extendedProps: {
                                 location: response.event.location,
                                 caption: response.event.caption,
-                                content: response.event.content
+                                content: response.event.content,
+                                user_name: response.user_name
                             }
                         });
                         $('#addEventModal').modal('hide'); // Sembunyikan modal setelah berhasil disimpan
                         alert('Event Created');
+
+                        $('#eventForm')[0].reset(); // Membersihkan form setelah berhasil menambahkan event
                     },
                     error: function () {
                         alert('Failed to create event');
