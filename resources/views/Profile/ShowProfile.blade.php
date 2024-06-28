@@ -24,6 +24,8 @@
     <p><strong>Email:</strong> {{$user->email}}</p>
     <p><strong>Bio:</strong> {{$user->bio}}</p>
     <p><strong>City:</strong> {{$user->city}}</p>
+    <p><strong>Birth Date:</strong> {{$user->birth_date}}</p>
+    <p><strong>Gender:</strong> {{$user->gender}}</p>
     <a href="/logout"><button>logout</button></a>
     </center>
 </body>

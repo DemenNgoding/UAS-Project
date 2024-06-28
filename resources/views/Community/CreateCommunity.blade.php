@@ -12,7 +12,7 @@
     <body>
         <div>
             <center>
-                <h1> ADD COMMUNITY </h1>
+                <h1> Add Community </h1>
                 <form action="{{url('create_community/{user_id}')}}" method="POST" enctype ="multipart/form-data">
                     @csrf
                     <div>
@@ -30,7 +30,7 @@
                             </select>
                     </div><br>
                     <div class="select-members">
-                            City:
+                            Members:
                             <select name="members">
                                 <option value="50">50</option>
                                 <option value="100">100</option>

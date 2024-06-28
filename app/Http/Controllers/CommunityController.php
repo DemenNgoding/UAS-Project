@@ -13,7 +13,8 @@ class CommunityController extends Controller
      */
     public function index()
     {
-        //
+        $community = Community::find();
+        return view('Home', compact('community'));
     }
 
     /**
@@ -50,7 +51,8 @@ class CommunityController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $community = Community::with('user')->get();
+        return view('Home', compact('community'));
     }
 
     /**
