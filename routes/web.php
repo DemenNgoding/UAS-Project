@@ -7,7 +7,6 @@ use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 
-
 // Welcome Route
 Route::get('/', [SessionController::class,'index']);
 
@@ -47,13 +46,17 @@ Route::middleware('auth')->group(function () {
     route::post('/regProfile', [ProfileController::class, 'store']);
 
     // Add Community Route
-    // route::get('/addcommunity', [CommunityController::class, 'create']);
 
+    
     // Add Community Route
     
     // Logout Route
     route::get('/logout', [SessionController::class,'logout']);
-    
+
+    // search comunity
+    Route::get('community/search', [CommunityController::class, 'search']);
+    Route::get('community', [CommunityController::class, 'index']);
+
     // Home Route
     Route::get('/home', function () {
         return view('home');

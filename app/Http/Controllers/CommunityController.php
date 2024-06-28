@@ -46,6 +46,17 @@ class CommunityController extends Controller
         return redirect()->back()->with('success', 'Community Created Successfully');
     }
 
+    // public function search(Request $request) {
+
+    //     if(request('search')) {
+    //         $communities = Community::where('community_name', 'like', '%' .request('search') . '%')->get();
+    //     } else {
+    //         $communities = Community::all();
+    //     }
+
+    //     return view('/communities');
+    // }
+
     /**
      * Display the specified resource.
      */
