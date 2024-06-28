@@ -10,22 +10,11 @@ class CommunityController extends Controller
 {
     /**
      * Display a listing of the resource.
-     */ 
-    public function search(Request $request){
-        if($request->has('search')){
-            $search = $request->search;
-            $data = Community::where('community_name', 'like', "%{$search}%")
-                             ->orWhere('category', 'like', "%{$search}%")
-                             ->paginate(5);
-        }else{
-            $data = Community::paginate(5);
-        }
-        return view('Home', ['community'=>$data]);
-    }
-
-    public function index(){
-        
-        return view('community.index');
+     */
+    public function index()
+    {
+        $community = Community::find();
+        return view('Home', compact('community'));
     }
 
     /**
@@ -73,7 +62,8 @@ class CommunityController extends Controller
      */
     public function show(string $id)
     {
-        //show the searching reco
+        $community = Community::with('user')->get();
+        return view('Home', compact('community'));
     }
 
     /**
