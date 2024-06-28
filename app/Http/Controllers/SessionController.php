@@ -63,7 +63,7 @@ class SessionController extends Controller
 
         if(Auth::attempt($loginInfo)) {
             // if the login success
-            return redirect('login');
+            return redirect('reg_profile/{user_id}');
         }
     }   
 
@@ -72,13 +72,4 @@ class SessionController extends Controller
         return redirect("/");
     }
 
-    public function registerProfile (Request $request) {
-        $request->validate([
-            "username"=>"required",
-            "bio",
-            "gender"=> "required", 
-            "birth_date"=> "required", 
-            "city"=> "required", 
-        ]);
-    }
 }

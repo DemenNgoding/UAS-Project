@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id()->primary()->index()->autoIncrement();
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('community_id')->constrained('community');
+            // $table->foreignId('community_id')->constrained('community');
             $table->text('title')->nullable();
             $table->longtext('caption')->nullable();
             $table->string('image')->nullable();

@@ -33,9 +33,10 @@ Route::middleware('auth')->group(function () {
     // Profile Route
     route::get('/profile/{user_id}', [ProfileController::class,'show']);
     
-    route::get('regProfile', [ProfileController::class, 'create']);
+    // route::post('/storeProfile', [ProfileController::class, 'store'])->name('profile.store');
 
-    route::post('/regProfile', [ProfileController::class, 'store']);
+    // route::get('/regProfile', [ProfileController::class, 'create']);
+
 
     // Add Community Route
     route::get('/addcommunity', [CommunityController::class, 'create'])->name('community.create');
@@ -52,6 +53,9 @@ Route::middleware('auth')->group(function () {
     });
 
 });
+
+Route::get('/reg_profile', [ProfileController::class,'show_regist']);
+Route::post('/reg_profile/{user_id}', [ProfileController::class, 'store'])->name('reg_profile');
 
 // Post Route
 Route::get('/create_post/{user_id}', function () {

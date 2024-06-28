@@ -50,7 +50,9 @@
             </div>
 
             {{-- Submit Button --}}
-            <button name="submit" type="submit" class="btn">Register</button>
+            <a href="/reg_profile/{user_id}">
+                <button name="submit" type="submit" class="btn">Register</button>
+            </a>
 
             {{-- Link To Register --}}
             <div class="register-link">
