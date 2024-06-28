@@ -46,7 +46,7 @@
 
 </div>
   @include('components/Navbar')
-  <form action="/addcommunity">
+  <form action="/create_community">
         <button>Add Community</button>
   </form>
   <!-- change to user id later -->
